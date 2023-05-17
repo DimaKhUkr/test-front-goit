@@ -16,7 +16,8 @@ export default function Home() {
         <Wrapper>
           {isLoggedIn ? (
             <HomeTitle>
-              Go to the "Contacts" tab to see the list of contacts
+              Go to the `&ldquo;` Contacts `&ldquo;` tab to see the list of
+              contacts
             </HomeTitle>
           ) : (
             <HomeTitle style={{ color: ' #DC143C' }}>

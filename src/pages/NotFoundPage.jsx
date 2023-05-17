@@ -4,7 +4,7 @@ export const NotFoundPage = () => {
   return (
     <>
       <ErrorTitle>Error 404</ErrorTitle>
-      <ErrorText>Woops... Looks like this page doesn't exist!</ErrorText>
+      <ErrorText>Woops... Looks like this page doesn`&apos;`t exist!</ErrorText>
     </>
   );
 };
