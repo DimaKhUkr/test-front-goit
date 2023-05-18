@@ -32,6 +32,10 @@ export const UserCards = () => {
 
   useEffect(() => {
     getUsers(selectValue).then(data => {
+      console.log(data);
+      if (data.length === 0) {
+        return toast.error(`User Cards not find`);
+      }
       setUsers(data);
     });
   }, [selectValue]);
@@ -46,7 +50,6 @@ export const UserCards = () => {
 
   const handleLoadMore = async () => {
     setLoadMore(true);
-
     setPage(prevState => prevState + 1);
     const data = await getUsers(selectValue, page);
 
@@ -67,7 +70,7 @@ export const UserCards = () => {
       <DropdownAndBackWrap>
         <GoBackButton to={location.state?.from ?? '/'}>
           <span>
-            <HiChevronDoubleLeft size="28" color="#5736a3" />
+            <HiChevronDoubleLeft size="28" color="#0000cd" />
           </span>
         </GoBackButton>
         <Select

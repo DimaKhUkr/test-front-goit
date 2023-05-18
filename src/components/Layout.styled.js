@@ -8,7 +8,7 @@ export const WrapperMain = styled.main`
 
 export const WrapperHeader = styled.header`
   height: 70px;
-  background: linear-gradient(to top right, #00bfff, #000080);
+  background: linear-gradient(to top right, #708090, #c0c0c0);
   display: flex;
   justify-content: space-evenly;
   align-items: center;

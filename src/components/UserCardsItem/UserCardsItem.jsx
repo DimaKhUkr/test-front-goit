@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { updateUser } from '../../Fetch/tweetsApi';
 
 import image from '../../img/picture.png';
@@ -24,8 +24,6 @@ export const UserCardsItem = user => {
 
   const [checked, setChecked] = useState(isFollowed);
   const [follow, setFollow] = useState(followers);
-
-  useEffect(() => {}, []);
 
   const folowersChange = async () => {
     setChecked(!checked);

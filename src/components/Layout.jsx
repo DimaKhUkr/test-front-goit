@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
-// import { Toaster } from 'react-hot-toast';
-// import { AppBar } from './AppBar/AppBar';
+
 import { Suspense } from 'react';
 import { WrapperHeader, WrapperMain } from './Layout.styled';
 import { Loader } from './Loader/Loader';
 import { Navigation } from './Navigation/Navigation';
+import { ScrollToUp } from './ScrollToTop/ScrollToTop';
+
 export const Layout = () => {
   return (
     <div>
@@ -15,8 +16,8 @@ export const Layout = () => {
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
+        <ScrollToUp />
       </WrapperMain>
-      {/* <Toaster position="top-right" reverseOrder={false} /> */}
     </div>
   );
 };

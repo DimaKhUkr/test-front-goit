@@ -89,7 +89,6 @@ function Weather() {
       </WeatherName>
       <div>
         <CitySearch
-          autoFocus
           type="text"
           placeholder="Search City.."
           name="query"

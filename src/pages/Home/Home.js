@@ -3,7 +3,7 @@ import { WrapperHomePage, HomePage, Wrapper, Logo } from './HomePage.styled';
 import { Link } from 'react-router-dom';
 import logoGoIt from '../../img/goit.png';
 
-import HomeBG from '../../img/bg.jpeg';
+import HomeBG from '../../img/bg_main.jpg';
 
 export default function Home() {
   return (
