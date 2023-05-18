@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Select from 'react-select';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 import { HiChevronDoubleLeft } from 'react-icons/hi';
 import { getUsers } from '../../Fetch/tweetsApi';
@@ -52,7 +52,7 @@ export const UserCards = () => {
 
     if (data.length === 0) {
       setShowLoadMoreBtn(false);
-      toast.info('User Cards Off');
+      toast.error(`User Cards ended`);
     }
 
     setUsers(prevState => [...prevState, ...data]);

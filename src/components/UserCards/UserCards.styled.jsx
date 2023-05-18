@@ -31,19 +31,20 @@ export const UserCartsListAndLoadMoreBtnWrap = styled.div`
 export const UserCartsList = styled.ul`
   max-width: 1280px;
   margin: 0 auto;
-
+  list-style: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
+  padding: 0;
 `;
 
 export const LoadMoreButton = styled.button`
   display: inline-block;
   margin-top: 40px;
   padding: 14px 56px;
-
+  width: 230px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;

@@ -1,17 +1,5 @@
 import styled from 'styled-components';
 
-export const HomeTitle = styled.p`
-  max-width: 400px;
-  padding-left: 15px;
-  font-size: 32px;
-  font-weight: 700;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-  @media screen and (max-width: 550px) {
-    font-size: 26px;
-  }
-`;
 export const WrapperHomePage = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -43,4 +31,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 750px) {
     padding: 15px;
   }
+`;
+export const Logo = styled.img`
+  height: 100px;
 `;

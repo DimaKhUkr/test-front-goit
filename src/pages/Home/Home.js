@@ -1,10 +1,7 @@
 import Weather from 'WeatherApp/WeatherApp';
-import {
-  HomeTitle,
-  WrapperHomePage,
-  HomePage,
-  Wrapper,
-} from './HomePage.styled';
+import { WrapperHomePage, HomePage, Wrapper, Logo } from './HomePage.styled';
+import { Link } from 'react-router-dom';
+import logoGoIt from '../../img/goit.png';
 
 import HomeBG from '../../img/bg.jpeg';
 
@@ -13,9 +10,9 @@ export default function Home() {
     <HomePage style={{ backgroundImage: `url(${HomeBG})` }}>
       <WrapperHomePage>
         <Wrapper>
-          <HomeTitle>
-            Go to the &ldquo;Contacts&ldquo; tab to see the list of contacts
-          </HomeTitle>
+          <Link to="https://m.goit.global/ua/new/">
+            <Logo src={logoGoIt} alt="GOIT Logo" />
+          </Link>
         </Wrapper>
         <Weather />
       </WrapperHomePage>

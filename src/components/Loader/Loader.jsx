@@ -1,6 +1,5 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { WrapperLoader } from './Loader.styled';
-import PropTypes from 'prop-types';
 
 const sizes = {
   sm: 40,
@@ -8,19 +7,15 @@ const sizes = {
   lg: 80,
 };
 
-export const Loader = ({ size = 'lg' }) => {
+export const Loader = () => {
   return (
     <WrapperLoader>
       <RotatingLines
         strokeColor="grey"
         strokeWidth="4"
-        width={sizes[size]}
+        width={sizes.lg}
         animationDuration="1.2"
       />
     </WrapperLoader>
   );
-};
-
-Loader.propTypes = {
-  size: PropTypes.number.isRequired,
 };

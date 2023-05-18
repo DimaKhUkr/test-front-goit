@@ -20,9 +20,9 @@ import {
 } from './UserCardsItem.styled';
 
 export const UserCardsItem = user => {
-  const { id, avatar, tweets, followers, check } = user.user;
+  const { id, avatar, tweets, followers, isFollowed } = user.user;
 
-  const [checked, setChecked] = useState(check);
+  const [checked, setChecked] = useState(isFollowed);
   const [follow, setFollow] = useState(followers);
 
   useEffect(() => {}, []);
