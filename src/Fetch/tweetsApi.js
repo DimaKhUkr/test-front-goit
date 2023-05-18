@@ -2,12 +2,12 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://64429ddd33997d3ef91539c5.mockapi.io/';
 
-export const getUsers = async (isFollowed, page = 1) => {
+export const getUsers = async (isFollowed, page = 1, limit = 3) => {
   const res = await axios.get(`twits`, {
     params: {
       isFollowed,
       page,
-      limit: 3,
+      limit,
     },
   });
   return res.data;

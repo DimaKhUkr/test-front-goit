@@ -27,25 +27,31 @@ export const UserCards = () => {
   const [users, setUsers] = useState([]);
   const [loadMore, setLoadMore] = useState(false);
   const [page, setPage] = useState(2);
-  const [selectValue, setSelectValue] = useState('');
+  const [selectValue] = useState('');
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
-
+  const [loadCards, setLoadCards] = useState(true);
   useEffect(() => {
-    getUsers(selectValue).then(data => {
-      console.log(data);
+    getUsers().then(data => {
       if (data.length === 0) {
         return toast.error(`User Cards not find`);
       }
       setUsers(data);
     });
-  }, [selectValue]);
+  }, []);
 
   const location = useLocation();
 
   const handleChange = selectValue => {
-    setSelectValue(selectValue.value);
-    setShowLoadMoreBtn(true);
-    setPage(2);
+    console.log(selectValue.value);
+    getUsers(selectValue.value).then(data => {
+      setLoadCards(true);
+      if (data.length === 0) {
+        setLoadCards(false);
+
+        return toast.error(`User Cards not found`);
+      }
+      setUsers(data);
+    });
   };
 
   const handleLoadMore = async () => {
@@ -62,7 +68,7 @@ export const UserCards = () => {
 
     setLoadMore(false);
   };
-
+  console.log(loadCards);
   return !users.length ? (
     <Loader />
   ) : (
@@ -80,22 +86,26 @@ export const UserCards = () => {
           onChange={handleChange}
         />
       </DropdownAndBackWrap>
-      <ListContainer>
-        <UserCartsListAndLoadMoreBtnWrap>
-          <UserCartsList>
-            {users.map(user => (
-              <UserCardsItem key={user.id} user={user} />
-            ))}
-          </UserCartsList>
+      {loadCards ? (
+        <ListContainer>
+          <UserCartsListAndLoadMoreBtnWrap>
+            <UserCartsList>
+              {users.map(user => (
+                <UserCardsItem key={user.id} user={user} />
+              ))}
+            </UserCartsList>
 
-          {loadMore && <Loader />}
-          {showLoadMoreBtn && (
-            <LoadMoreButton onClick={handleLoadMore} type="button">
-              {loadMore ? 'Loading...' : 'LOAD MORE'}
-            </LoadMoreButton>
-          )}
-        </UserCartsListAndLoadMoreBtnWrap>
-      </ListContainer>
+            {loadMore && <Loader />}
+            {showLoadMoreBtn && (
+              <LoadMoreButton onClick={handleLoadMore} type="button">
+                {loadMore ? 'Loading...' : 'LOAD MORE'}
+              </LoadMoreButton>
+            )}
+          </UserCartsListAndLoadMoreBtnWrap>
+        </ListContainer>
+      ) : (
+        toast.error(`User Cards not found!!! Please choose another option!!!`)
+      )}
     </section>
   );
 };
