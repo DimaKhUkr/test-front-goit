@@ -18,7 +18,7 @@ import {
 } from './UserCards.styled';
 
 const selectOptions = [
-  { value: '', label: 'All' },
+  { value: '', label: 'All cards' },
   { value: 'false', label: 'Follow' },
   { value: 'true', label: 'Following' },
 ];
@@ -27,9 +27,10 @@ export const UserCards = () => {
   const [users, setUsers] = useState([]);
   const [loadMore, setLoadMore] = useState(false);
   const [page, setPage] = useState(2);
-  const [selectValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
   const [loadCards, setLoadCards] = useState(true);
+
   useEffect(() => {
     getUsers().then(data => {
       if (data.length === 0) {
@@ -41,14 +42,19 @@ export const UserCards = () => {
 
   const location = useLocation();
 
-  const handleChange = selectValue => {
-    console.log(selectValue.value);
-    getUsers(selectValue.value).then(data => {
+  const handleChange = selectedOption => {
+    setPage(2);
+    setSelectedOption(selectedOption);
+    setShowLoadMoreBtn(true);
+    getUsers(selectedOption.value).then(data => {
       setLoadCards(true);
       if (data.length === 0) {
         setLoadCards(false);
 
         return toast.error(`User Cards not found`);
+      }
+      if (data.length < 3) {
+        setShowLoadMoreBtn(false);
       }
       setUsers(data);
     });
@@ -57,9 +63,10 @@ export const UserCards = () => {
   const handleLoadMore = async () => {
     setLoadMore(true);
     setPage(prevState => prevState + 1);
-    const data = await getUsers(selectValue, page);
+    console.log(selectedOption);
+    const data = await getUsers(selectedOption.value, page);
 
-    if (data.length === 0) {
+    if (data.length < 2) {
       setShowLoadMoreBtn(false);
       toast.error(`User Cards ended`);
     }
@@ -68,7 +75,6 @@ export const UserCards = () => {
 
     setLoadMore(false);
   };
-  console.log(loadCards);
   return !users.length ? (
     <Loader />
   ) : (
@@ -82,7 +88,7 @@ export const UserCards = () => {
         <Select
           closeMenuOnSelect={true}
           options={selectOptions}
-          value={selectValue}
+          value={selectedOption}
           onChange={handleChange}
         />
       </DropdownAndBackWrap>
