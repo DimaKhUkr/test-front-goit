@@ -47,7 +47,7 @@ export const UserCardsItem = user => {
       <Avatar src={avatar} alt="user avatar" />
 
       <Tweets>{tweets} TWEETS</Tweets>
-      <Followers>{follow} FOLOWERS</Followers>
+      <Followers>{follow.toLocaleString('en-US')} FOLOWERS</Followers>
       <CheckboxContainer>
         <CheckboxInput
           type="checkbox"
